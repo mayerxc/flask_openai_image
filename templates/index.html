@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+
+    <title>Open AI Image Create</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <h2>OpenAI Image Generator</h2>
+        <a href="https://beta.openai.com/docs" target="_blank"
+          >OpenAI Documentation</a
+        >
+      </nav>
+    </header>
+
+    <main>
+      <section class="form-container">
+        <form>
+          <input type="text" />
+          <button type="submit">Generate</button>
+        </form>
+      </section>
+      <section class="image"10>
+        <h2 class="msg"></h2>
+        <img src="" alt="" id="image" />
+      </section>
+    </main>
+  </body>
+</html>
