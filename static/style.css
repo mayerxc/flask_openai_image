@@ -33,12 +33,12 @@ nav a:hover {
 /* main */
 
 .form-container {
-  height: 300px;
+  /* height: 300px; */
   width: 100%;
   background: var(--primary-color);
 }
 
-form {
+.form-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -47,17 +47,17 @@ form {
   width: 100%;
 }
 
-form input {
+.form-container input {
   font-size: 20px;
   width: 500px;
   max-width: 500px;
   padding: 1rem;
   border: 1px solid #ccc;
   border-radius: 5px;
-  margin-bottom: 1rem;
+  margin: 1rem;
 }
 
-form button {
+.form-container button {
   font-size: 20px;
   color: white;
   background-color: #333;
@@ -68,6 +68,24 @@ form button {
   cursor: pointer;
 }
 
-form button:hover {
+.form-container button:hover {
   transform: scale(1.1);
+}
+
+/* image section */
+
+.image-container {
+  /* width: 100%; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.msg {
+  color: rgb(231, 31, 31);
+}
+
+img {
+  margin: 0.5rem;
 }
