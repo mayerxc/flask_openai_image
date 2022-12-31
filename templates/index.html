@@ -8,9 +8,14 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='style.css') }}"
     />
-
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='loader.css') }}"
+    />
+    <script defer src="static/main.js"></script>
     <title>Open AI Image Create</title>
   </head>
+
   <body>
     <header>
       <nav>
@@ -23,15 +28,15 @@
 
     <main>
       <section class="form-container">
-        <form>
-          <input type="text" />
-          <button type="submit">Generate</button>
-        </form>
+        <input type="text" />
+        <button type="button">Generate</button>
       </section>
-      <section class="image"10>
+      <section class="image-container">
         <h2 class="msg"></h2>
         <img src="" alt="" id="image" />
+        <p id="message"></p>
       </section>
     </main>
+    <div id="loading" class="loading">Loading&#8230;</div>
   </body>
 </html>
