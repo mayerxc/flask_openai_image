@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, Response
+from flask import Flask, render_template, request, abort
 from dotenv import load_dotenv
 import requests
 import os
@@ -19,30 +19,24 @@ def index():
     return render_template("index.html")
 
 
-@app.post("/make_image/")
+@app.post("/make_image")
 def make_image():
     data = request.get_json()
     prompt = data.get("prompt")
     size = data.get("size")
     print("from request.get_json()", data)
     data_to_send = json.dumps({"prompt": prompt, "n": 1, "size": size})
-    print(data_to_send)
     url = ""
     try:
         response = requests.post(OPENAI_URL, headers=headers, data=data_to_send)
+        if response.json().get('error'):
+            error_message = response.json().get('error').get('message')
+            print('error message', error_message)
+            return {"error": error_message}
         response.raise_for_status()
         resp_dict = response.json()
-        url = resp_dict.get("data")[0]
+        url = resp_dict.get("data")[0].get('url')
     except requests.exceptions.HTTPError as err:
         print(err)
-        return Response("Failed for some reason", status=400)
-
-    # { "prompt": "coder cat drinking coffee ", "n": 1, "size": "512x512" }
-    # return make_response({"prompt": prompt, "size": size, "openai_key": openia_key})
-    # return {
-    #     "prompt": prompt,
-    #     "size": size,
-    #     "openai_key": openia_key,
-    #     "dataToSend": data_to_send,
-    # }
+        abort(400, f"Error: {err}")
     return {"url": url}
