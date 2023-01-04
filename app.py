@@ -29,13 +29,13 @@ def make_image():
     url = ""
     try:
         response = requests.post(OPENAI_URL, headers=headers, data=data_to_send)
-        if response.json().get('error'):
-            error_message = response.json().get('error').get('message')
-            print('error message', error_message)
+        if response.json().get("error"):
+            error_message = response.json().get("error").get("message")
+            print("error message", error_message)
             return {"error": error_message}
         response.raise_for_status()
         resp_dict = response.json()
-        url = resp_dict.get("data")[0].get('url')
+        url = resp_dict.get("data")[0].get("url")
     except requests.exceptions.HTTPError as err:
         print(err)
         abort(400, f"Error: {err}")
