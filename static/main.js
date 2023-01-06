@@ -28,17 +28,17 @@ async function makeImage(e) {
     const { url, error } = responseJson;
     if (error) {
       // display error on page for user if they typed something inappropriate
-      document.querySelector('.msg').textContent = error;
+      document.querySelector('.error-msg').textContent = error;
       document.querySelector('#image').src = '';
       document.querySelector('#message').textContent = prompt;
     } else {
-      document.querySelector('.msg').textContent = '';
+      document.querySelector('.error-msg').textContent = '';
       document.querySelector('#image').src = url;
       document.querySelector('#message').textContent = prompt;
     }
   } catch (err) {
     console.error('error', err);
-    document.querySelector('.msg').textContent = err;
+    document.querySelector('.error-msg').textContent = err;
     document.querySelector('#image').src = '';
     document.querySelector('#message').textContent = prompt;
   }
