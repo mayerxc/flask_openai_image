@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital@1&family=Shadows+Into+Light&display=swap');
+
 :root {
   --primary-color: #6cb4ee;
 }
@@ -8,6 +10,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'Lato', sans-serif;
 }
 
 /* nav */
@@ -80,14 +83,20 @@ nav a:hover {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  margin-bottom: 6rem;
 }
 
-.msg {
+.error-msg {
   color: rgb(231, 31, 31);
 }
 
-img {
+#image {
   margin: 0.5rem;
+}
+
+#message {
+  padding: 1rem;
+  font-size: 1.15rem;
 }
 
 @media only screen and (max-width: 500px) {
