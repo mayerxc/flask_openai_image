@@ -24,19 +24,18 @@ def make_image():
     data = request.get_json()
     prompt = data.get("prompt")
     size = data.get("size")
-    print("from request.get_json()", data)
     data_to_send = json.dumps({"prompt": prompt, "n": 1, "size": size})
     url = ""
     try:
         response = requests.post(OPENAI_URL, headers=headers, data=data_to_send)
         if response.json().get("error"):
             error_message = response.json().get("error").get("message")
-            print("error message", error_message)
+            print("Error message from API", error_message)
             return {"error": error_message}
         response.raise_for_status()
         resp_dict = response.json()
         url = resp_dict.get("data")[0].get("url")
     except requests.exceptions.HTTPError as err:
-        print(err)
+        print("requests error:", err)
         abort(400, f"Error: {err}")
     return {"url": url}
