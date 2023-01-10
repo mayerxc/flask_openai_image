@@ -42,9 +42,9 @@
 
   <body>
     <header>
-      <nav>
+      <nav class="nav">
         <h2>OpenAI Image Generator</h2>
-        <a href="https://beta.openai.com/docs" target="_blank"
+        <a class="link" href="https://beta.openai.com/docs" target="_blank"
           >OpenAI Documentation</a
         >
       </nav>
@@ -52,15 +52,20 @@
 
     <main>
       <section class="form-container">
-        <input type="text" />
-        <button type="button">Generate</button>
+        <input class="input" type="text" data-input />
+        <select class="select" name="size" id="size" data-size>
+          <option value="256x256">Small</option>
+          <option value="512x512" selected>Medium</option>
+          <option value="1024x1024">Large</option>
+        </select>
+        <button class="button" type="button" data-button>Generate</button>
       </section>
       <section class="image-container">
-        <h2 class="error-msg"></h2>
-        <img src="" alt="" id="image" />
-        <p id="message"></p>
+        <h2 class="error-msg" data-error></h2>
+        <img class="image" src="" alt="" id="image" data-image />
+        <p id="message" data-message></p>
       </section>
     </main>
-    <div id="loading" class="loading">Loading&#8230;</div>
+    <div id="loading" class="loading" data-loading>Loading&#8230;</div>
   </body>
 </html>
