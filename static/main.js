@@ -48,7 +48,6 @@ async function makeImage(e) {
     imageElement.src = '';
     messageElement.textContent = prompt;
   }
-
   inputElement.value = '';
   hideSpinner();
 }
