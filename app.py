@@ -38,4 +38,6 @@ def make_image():
     except requests.exceptions.HTTPError as err:
         print("requests error:", err)
         abort(400, f"Error: {err}")
+    except Exception as error:
+        print("Normal error: ", error)
     return {"url": url}
