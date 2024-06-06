@@ -20,7 +20,7 @@ async function makeImage(e) {
   showSpinner();
   const prompt = inputElement.value;
   const size = sizeElement.value;
-  const data = { prompt, size, n: 1 };
+  const data = { prompt, size };
   const headers = {
     method: 'POST',
     headers: {

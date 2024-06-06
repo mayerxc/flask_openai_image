@@ -11,7 +11,9 @@ app = Flask(__name__)
 
 openia_key = os.getenv("OPENAI_KEY")
 OPENAI_URL = "https://api.openai.com/v1/images/generations"
+model = "dall-e-3"
 headers = {"Content-Type": "application/json", "Authorization": f"Bearer {openia_key}"}
+size_dict = {"small": "1024x1024", "medium": "1792x1024", "large": "1024x1792"}
 
 
 @app.route("/")
@@ -23,8 +25,11 @@ def index():
 def make_image():
     data = request.get_json()
     prompt = data.get("prompt")
-    size = data.get("size")
-    data_to_send = json.dumps({"prompt": prompt, "n": 1, "size": size})
+    size_from_frontend = data.get("size")
+    size = size_dict.get(size_from_frontend, "1024x1024")
+    data_to_send = json.dumps(
+        {"model": model, "prompt": prompt, "n": 1, "size": size, "style": "natural"}
+    )
     url = ""
     try:
         response = requests.post(OPENAI_URL, headers=headers, data=data_to_send)
